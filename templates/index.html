@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QoL Analyser • India Relocation Advisor 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #0d1117;
+      --surface:   #161b22;
+      --surface2:  #1c2333;
+      --border:    rgba(255,255,255,0.08);
+      --border2:   rgba(255,255,255,0.14);
+      --gold:      #e8b84b;
+      --gold-dim:  #a07c2a;
+      --gold-bg:   rgba(232,184,75,0.08);
+      --emerald:   #3fb57a;
+      --emerald-bg:rgba(63,181,122,0.1);
+      --amber:     #f0a35c;
+      --amber-bg:  rgba(240,163,92,0.1);
+      --red:       #e05c5c;
+      --red-bg:    rgba(224,92,92,0.1);
+      --blue:      #5b9cf6;
+      --blue-bg:   rgba(91,156,246,0.1);
+      --text:      #e6edf3;
+      --muted:     #7d8590;
+      --muted2:    #4d5562;
+      --serif:     'DM Serif Display', Georgia, serif;
+      --sans:      'Instrument Sans', sans-serif;
+      --mono:      'DM Mono', 'Courier New', monospace;
+      --radius:    10px;
+      --radius-lg: 16px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 15px;
+      line-height: 1.6;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── Background grid ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(232,184,75,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(232,184,75,0.03) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .wrap { position: relative; z-index: 1; max-width: 1080px; margin: 0 auto; padding: 0 24px 80px; }
+
+    /* ── HEADER ── */
+    header {
+      padding: 48px 0 40px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 48px;
+    }
+    .logo-block { display: flex; align-items: center; gap: 16px; }
+    .logo-icon {
+      width: 44px; height: 44px;
+      background: var(--gold-bg);
+      border: 1px solid var(--gold-dim);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px;
+    }
+    .logo-text h1 {
+      font-family: var(--serif);
+      font-size: 26px;
+      letter-spacing: -0.5px;
+      color: var(--text);
+      line-height: 1;
+    }
+    .logo-text p {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 3px;
+      font-family: var(--mono);
+      letter-spacing: 0.04em;
+    }
+    .header-badge {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--gold);
+      background: var(--gold-bg);
+      border: 1px solid var(--gold-dim);
+      padding: 4px 12px;
+      border-radius: 20px;
+      letter-spacing: 0.06em;
+    }
+
+    /* ── INPUT PANEL ── */
+    .input-panel {
+      background: var(--surface);
+      border: 1px solid var(--border2);
+      border-radius: var(--radius-lg);
+      padding: 36px;
+      margin-bottom: 12px;
+    }
+    .input-panel-title {
+      font-size: 11px;
+      font-family: var(--mono);
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+    .input-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 20px;
+      align-items: end;
+    }
+    @media (max-width: 700px) { .input-grid { grid-template-columns: 1fr; } }
+
+    .field label {
+      display: block;
+      font-size: 11px;
+      font-family: var(--mono);
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .field select, .field input {
+      width: 100%;
+      background: var(--bg);
+      border: 1px solid var(--border2);
+      border-radius: var(--radius);
+      padding: 12px 16px;
+      color: var(--text);
+      font-family: var(--mono);
+      font-size: 15px;
+      outline: none;
+      transition: border-color 0.2s;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+    .field select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237d8590' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 36px;
+    }
+    .field select:focus, .field input:focus { border-color: var(--gold); }
+    .field select option { background: var(--surface); }
+
+    .analyse-btn {
+      width: 100%;
+      background: var(--gold);
+      color: #0d1117;
+      border: none;
+      border-radius: var(--radius);
+      padding: 13px 20px;
+      font-family: var(--sans);
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+    }
+    .analyse-btn:hover  { background: #f0c85a; }
+    .analyse-btn:active { transform: scale(0.98); }
+
+    /* ── NOTICE STRIP ── */
+    .data-notice {
+      font-size: 11px;
+      color: var(--muted2);
+      font-family: var(--mono);
+      padding: 8px 0 32px;
+      letter-spacing: 0.03em;
+    }
+    .data-notice span { color: var(--muted); }
+
+    /* ── RESULTS ── */
+    #results { display: none; }
+    #results.visible { display: block; animation: fadeUp 0.4s ease both; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* ── SECTION TITLE ── */
+    .section-label {
+      font-size: 11px;
+      font-family: var(--mono);
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+    /* ── VERDICT BANNER ── */
+    .verdict-banner {
+      border-radius: var(--radius-lg);
+      padding: 28px 32px;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      border: 1px solid;
+      flex-wrap: wrap;
+    }
+    .verdict-banner.go    { background: var(--emerald-bg); border-color: rgba(63,181,122,0.3); }
+    .verdict-banner.caution { background: var(--amber-bg);   border-color: rgba(240,163,92,0.3); }
+    .verdict-banner.stop  { background: var(--red-bg);     border-color: rgba(224,92,92,0.3); }
+
+    .verdict-left { display: flex; align-items: center; gap: 20px; }
+    .verdict-icon { font-size: 36px; line-height: 1; }
+    .verdict-city { font-family: var(--serif); font-size: 28px; line-height: 1.1; }
+    .verdict-city span { font-size: 14px; font-family: var(--sans); color: var(--muted); display: block; margin-top: 2px; }
+    .verdict-pill {
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 500;
+      padding: 6px 18px;
+      border-radius: 20px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .verdict-pill.go      { background: var(--emerald); color: #0d1117; }
+    .verdict-pill.caution { background: var(--amber);   color: #0d1117; }
+    .verdict-pill.stop    { background: var(--red);     color: #fff; }
+
+    /* ── METRIC CARDS ── */
+    .metrics-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    @media (max-width: 700px) { .metrics-row { grid-template-columns: 1fr 1fr; } }
+
+    .metric-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+    }
+    .metric-label {
+      font-size: 10px;
+      font-family: var(--mono);
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .metric-value {
+      font-family: var(--mono);
+      font-size: 22px;
+      font-weight: 500;
+      color: var(--text);
+      line-height: 1;
+    }
+    .metric-value.green  { color: var(--emerald); }
+    .metric-value.amber  { color: var(--amber); }
+    .metric-value.red    { color: var(--red); }
+    .metric-value.gold   { color: var(--gold); }
+    .metric-sub {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 4px;
+      font-family: var(--mono);
+    }
+
+    /* ── TWO-COL LAYOUT ── */
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
+    @media (max-width: 700px) { .two-col { grid-template-columns: 1fr; } }
+    .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin-bottom: 20px; }
+    @media (max-width: 800px) { .three-col { grid-template-columns: 1fr; } }
+
+    /* ── PANEL ── */
+    .panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+    }
+    .panel-title {
+      font-family: var(--serif);
+      font-size: 17px;
+      margin-bottom: 20px;
+      color: var(--text);
+    }
+
+    /* ── BUDGET BARS ── */
+    .budget-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+    .budget-label { width: 120px; font-size: 12px; color: var(--muted); flex-shrink: 0; }
+    .budget-bar-wrap { flex: 1; height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; }
+    .budget-bar { height: 100%; border-radius: 3px; transition: width 0.6s cubic-bezier(.22,.68,0,1.2); width: 0; }
+    .budget-amount { font-family: var(--mono); font-size: 12px; color: var(--text); min-width: 80px; text-align: right; }
+    .budget-total-row {
+      border-top: 1px solid var(--border);
+      padding-top: 14px;
+      margin-top: 4px;
+      display: flex;
+      justify-content: space-between;
+      font-family: var(--mono);
+      font-size: 13px;
+    }
+    .budget-total-row .label { color: var(--muted); }
+    .budget-total-row .amt   { color: var(--text); font-weight: 500; }
+
+    /* ── SAVINGS METER ── */
+    .savings-ring-wrap { display: flex; flex-direction: column; align-items: center; padding: 12px 0 4px; }
+    .savings-ring-label { font-size: 11px; color: var(--muted); font-family: var(--mono); margin-top: 12px; letter-spacing: 0.06em; }
+    .ring-center { text-align: center; }
+    .ring-pct { font-family: var(--mono); font-size: 28px; font-weight: 500; }
+    .ring-sub  { font-size: 10px; color: var(--muted); margin-top: 2px; font-family: var(--mono); }
+    svg.ring { overflow: visible; }
+
+    /* ── QOL RADAR ── */
+    .qol-chart-wrap { height: 220px; position: relative; }
+
+    /* ── LOAN PANEL ── */
+    .loan-header { display: flex; align-items: center; gap: 10px; margin-bottom: 18px; }
+    .loan-eligibility {
+      font-size: 11px;
+      font-family: var(--mono);
+      padding: 4px 12px;
+      border-radius: 20px;
+    }
+    .loan-eligible   { background: var(--emerald-bg); color: var(--emerald); border: 1px solid rgba(63,181,122,0.3); }
+    .loan-ineligible { background: var(--red-bg);     color: var(--red);     border: 1px solid rgba(224,92,92,0.3); }
+    .loan-caution    { background: var(--amber-bg);   color: var(--amber);   border: 1px solid rgba(240,163,92,0.3); }
+
+    .loan-stat-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px; }
+    .loan-stat {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px 16px;
+    }
+    .loan-stat-label { font-size: 10px; font-family: var(--mono); color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 4px; }
+    .loan-stat-value { font-family: var(--mono); font-size: 16px; font-weight: 500; color: var(--text); }
+
+    .bank-list { display: flex; flex-direction: column; gap: 8px; }
+    .bank-row {
+      display: flex; align-items: center; justify-content: space-between;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 10px 14px;
+    }
+    .bank-name { font-size: 13px; color: var(--text); }
+    .bank-rate { font-family: var(--mono); font-size: 12px; color: var(--gold); }
+
+    /* ── COMPARISON TABLE ── */
+    .comp-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .comp-table th {
+      text-align: left; font-family: var(--mono); font-size: 10px;
+      color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 0 0 10px; border-bottom: 1px solid var(--border);
+    }
+    .comp-table td { padding: 9px 0; border-bottom: 1px solid var(--border); vertical-align: middle; }
+    .comp-table tr:last-child td { border-bottom: none; }
+    .comp-table td.city-name { color: var(--text); font-weight: 500; }
+    .comp-table td.mono { font-family: var(--mono); color: var(--muted); }
+    .comp-table tr.current-city td { background: var(--gold-bg); }
+    .comp-table tr.current-city td.city-name { color: var(--gold); }
+    .pill-sm {
+      display: inline-block; font-family: var(--mono); font-size: 10px;
+      padding: 2px 8px; border-radius: 10px;
+    }
+    .pill-green { background: var(--emerald-bg); color: var(--emerald); }
+    .pill-amber { background: var(--amber-bg); color: var(--amber); }
+    .pill-red   { background: var(--red-bg); color: var(--red); }
+
+    /* ── ADVICE CARD ── */
+    .advice-card {
+      background: linear-gradient(135deg, var(--surface2) 0%, var(--surface) 100%);
+      border: 1px solid var(--border2);
+      border-radius: var(--radius-lg);
+      padding: 28px 32px;
+      margin-bottom: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    .advice-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 4px; height: 100%;
+    }
+    .advice-card.go::before     { background: var(--emerald); }
+    .advice-card.caution::before { background: var(--amber); }
+    .advice-card.stop::before   { background: var(--red); }
+    .advice-title { font-family: var(--serif); font-size: 20px; margin-bottom: 12px; }
+    .advice-body  { font-size: 14px; color: var(--muted); line-height: 1.8; }
+    .advice-body strong { color: var(--text); font-weight: 500; }
+
+    .insight-list { list-style: none; display: flex; flex-direction: column; gap: 8px; margin-top: 16px; }
+    .insight-list li {
+      font-size: 13px; color: var(--muted);
+      display: flex; align-items: flex-start; gap: 8px; line-height: 1.6;
+    }
+    .insight-list li::before {
+      content: '→';
+      color: var(--gold);
+      font-family: var(--mono);
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .insight-list li strong { color: var(--text); font-weight: 500; }
+
+    /* ── NO-QOL NOTE ── */
+    .no-qol-note {
+      background: var(--amber-bg);
+      border: 1px solid rgba(240,163,92,0.25);
+      border-radius: var(--radius);
+      padding: 10px 14px;
+      font-size: 12px;
+      color: var(--amber);
+      font-family: var(--mono);
+      margin-top: 12px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      margin-top: 60px;
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    footer p { font-size: 11px; color: var(--muted2); font-family: var(--mono); }
+    footer span { color: var(--muted); }
+
+    /* ── Loading spinner ── */
+    .spinner { display: none; width: 16px; height: 16px; border: 2px solid rgba(0,0,0,0.2); border-top-color: #0d1117; border-radius: 50%; animation: spin 0.6s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .analyse-btn.loading .spinner { display: block; }
+    .analyse-btn.loading .btn-text { opacity: 0.7; }
+  </style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <!-- HEADER -->
+  <header>
+    <div class="logo-block">
+      <div class="logo-icon">₹</div>
+      <div class="logo-text">
+        <h1>QoL Analyser</h1>
+        <p>INDIA RELOCATION ADVISOR · 2026</p>
+      </div>
+    </div>
+    <div class="header-badge">DATA SNAPSHOT · MAR 2026</div>
+  </header>
+
+  <!-- INPUT PANEL -->
+  <div class="input-panel">
+    <div class="input-panel-title">// enter your details</div>
+    <div class="input-grid">
+      <div class="field">
+        <label>Current / Target City</label>
+        <select id="citySelect"></select>
+      </div>
+      <div class="field">
+        <label>Monthly Salary (₹)</label>
+        <input type="number" id="salaryInput" value="75000" min="10000" max="500000" step="1000">
+      </div>
+      <div>
+        <button class="analyse-btn" onclick="analyseRelocation(this)">
+          <span class="spinner"></span>
+          <span class="btn-text">▶ &nbsp;Analyse City</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="data-notice">
+    <span>Sources:</span> city_costs_master.csv · qol_master.csv · loan_emi_snapshot.csv · emi_calculations_master.csv &nbsp;|&nbsp;
+    <span>Note:</span> QoL indices available for 9 cities only. Costs are Mar 2026 snapshots.
+  </div>
+
+  <!-- RESULTS -->
+  <div id="results">
+
+    <!-- VERDICT BANNER -->
+    <div id="verdictBanner" class="verdict-banner">
+      <div class="verdict-left">
+        <div class="verdict-icon" id="verdictIcon"></div>
+        <div>
+          <div class="verdict-city" id="verdictCity"></div>
+          <div id="verdictSub" style="font-size:13px;color:var(--muted);margin-top:4px;"></div>
+        </div>
+      </div>
+      <div class="verdict-pill" id="verdictPill"></div>
+    </div>
+
+    <!-- METRIC CARDS -->
+    <div class="section-label">Key Metrics</div>
+    <div class="metrics-row">
+      <div class="metric-card">
+        <div class="metric-label">Monthly Essentials</div>
+        <div class="metric-value" id="mEssentials">—</div>
+        <div class="metric-sub" id="mEssentialsPct">—</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Disposable Income</div>
+        <div class="metric-value" id="mDisposable">—</div>
+        <div class="metric-sub" id="mDisposableSub">after essentials</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Savings Potential</div>
+        <div class="metric-value" id="mSavings">—</div>
+        <div class="metric-sub" id="mSavingsSub">—</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">QoL Index</div>
+        <div class="metric-value gold" id="mQol">—</div>
+        <div class="metric-sub" id="mQolSub">—</div>
+      </div>
+    </div>
+
+    <!-- BUDGET + SAVINGS ROW -->
+    <div class="section-label">Budget Breakdown</div>
+    <div class="two-col">
+
+      <!-- Budget Bars -->
+      <div class="panel">
+        <div class="panel-title">Where your salary goes</div>
+        <div id="budgetBars"></div>
+        <div class="budget-total-row">
+          <span class="label">TOTAL ESSENTIALS</span>
+          <span class="amt" id="budgetTotal">—</span>
+        </div>
+      </div>
+
+      <!-- Savings Donut + Breakdown -->
+      <div class="panel">
+        <div class="panel-title">Salary allocation</div>
+        <div style="height:200px;position:relative;">
+          <canvas id="allocationChart"></canvas>
+        </div>
+        <div id="allocationLegend" style="display:flex;flex-wrap:wrap;gap:10px;margin-top:14px;"></div>
+      </div>
+    </div>
+
+    <!-- QOL + LOAN ROW -->
+    <div class="section-label">Quality of Life &amp; Loans</div>
+    <div class="two-col">
+
+      <!-- QoL Radar -->
+      <div class="panel">
+        <div class="panel-title">QoL Dimensions</div>
+        <div class="qol-chart-wrap">
+          <canvas id="qolChart"></canvas>
+        </div>
+        <div id="noQolNote" class="no-qol-note" style="display:none;">
+          ⚠ QoL index data not available for this city. Showing estimated values.
+        </div>
+      </div>
+
+      <!-- Loan Panel -->
+      <div class="panel">
+        <div class="loan-header">
+          <div class="panel-title" style="margin:0;">Home Loan Advisory</div>
+          <div class="loan-eligibility" id="loanEligBadge">—</div>
+        </div>
+        <div class="loan-stat-row">
+          <div class="loan-stat">
+            <div class="loan-stat-label">Max Loan (40% EMI rule)</div>
+            <div class="loan-stat-value" id="lsMaxLoan">—</div>
+          </div>
+          <div class="loan-stat">
+            <div class="loan-stat-label">Comfortable EMI</div>
+            <div class="loan-stat-value" id="lsComfEMI">—</div>
+          </div>
+          <div class="loan-stat">
+            <div class="loan-stat-label">EMI on 50L / 20yr</div>
+            <div class="loan-stat-value" id="lsStdEMI">—</div>
+          </div>
+          <div class="loan-stat">
+            <div class="loan-stat-label">Avg Property Price</div>
+            <div class="loan-stat-value" id="lsPropPrice">—</div>
+          </div>
+        </div>
+        <div class="panel-title" style="font-size:13px;margin-bottom:10px;">Top banks by min rate</div>
+        <div class="bank-list" id="bankList"></div>
+      </div>
+    </div>
+
+    <!-- CITY COMPARISON -->
+    <div class="section-label">City Comparison</div>
+    <div class="panel" style="margin-bottom:24px;">
+      <div class="panel-title">How this city ranks against alternatives</div>
+      <div style="overflow-x:auto;">
+        <table class="comp-table" id="compTable">
+          <thead>
+            <tr>
+              <th>City</th>
+              <th>Monthly Essentials</th>
+              <th>Sufficiency Ratio</th>
+              <th>QoL Index</th>
+              <th>Affordability</th>
+              <th>Verdict</th>
+            </tr>
+          </thead>
+          <tbody id="compBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- FINAL ADVICE -->
+    <div class="section-label">Personalised Advice</div>
+    <div class="advice-card" id="adviceCard">
+      <div class="advice-title" id="adviceTitle"></div>
+      <div class="advice-body" id="adviceBody"></div>
+      <ul class="insight-list" id="adviceInsights"></ul>
+    </div>
+
+  </div><!-- /results -->
+
+  <footer>
+    <p>QoL Analyser &nbsp;·&nbsp; India 2026 &nbsp;·&nbsp; Data: city_costs_master, qol_master, loan_emi_snapshot, emi_calculations_master</p>
+    <p>Built with your <span>corrected Python pipeline</span> · Mar 2026 snapshot</p>
+  </footer>
+
+</div><!-- /wrap -->
+
+<script>
+/* ================================================================
+   DATA — sourced from your corrected master_city_level.csv
+   Only the fields consumed by this UI are included.
+   essentials = corrected total_monthly_essentials (realistic basket)
+   ================================================================ */
+const CITIES = {
+  "Ahmedabad":     { essentials:44200,  rent:6500,  food:13800, util:5200, transport:9800, hh:8900,  savings:0.20, qol:71.8, safety:62.4, healthcare:64.8, pollution:68.4, climate:72.6, traffic:51.2, emi50L:27100, propPrice:3200000, affordPressure:36.48,  hasQol:true  },
+  "Bangalore":     { essentials:58400,  rent:12000, food:17200, util:6800, transport:11400,hh:11000, savings:0.10, qol:76.8, safety:55.6, healthcare:68.2, pollution:72.4, climate:56.4, traffic:70.8, emi50L:32400, propPrice:7200000, affordPressure:45.92,  hasQol:true  },
+  "Bhopal":        { essentials:36200,  rent:5500,  food:12200, util:4800, transport:7800, hh:5900,  savings:0.25, qol:null, safety:null,  healthcare:null,  pollution:null,  climate:null,  traffic:null,  emi50L:26900, propPrice:2600000, affordPressure:null,   hasQol:false },
+  "Chennai":       { essentials:46800,  rent:7500,  food:14800, util:5600, transport:10200,hh:8700,  savings:0.16, qol:71.6, safety:60.4,  healthcare:64.8,  pollution:56.8,  climate:44.8,  traffic:54.2,  emi50L:27900, propPrice:4200000, affordPressure:40.12,  hasQol:true  },
+  "Coimbatore":    { essentials:38400,  rent:5800,  food:13200, util:4900, transport:8200, hh:6300,  savings:0.22, qol:null, safety:null,  healthcare:null,  pollution:null,  climate:null,  traffic:null,  emi50L:26800, propPrice:2800000, affordPressure:null,   hasQol:false },
+  "Delhi":         { essentials:54600,  rent:10000, food:15800, util:7200, transport:11800,hh:9800,  savings:0.14, qol:62.4, safety:42.1,  healthcare:58.2,  pollution:84.6,  climate:52.8,  traffic:58.4,  emi50L:32200, propPrice:6150000, affordPressure:46.44,  hasQol:true  },
+  "Hyderabad":     { essentials:47200,  rent:8000,  food:14200, util:5800, transport:10400,hh:8800,  savings:0.18, qol:74.2, safety:62.4,  healthcare:68.2,  pollution:58.6,  climate:72.6,  traffic:48.6,  emi50L:28800, propPrice:4800000, affordPressure:41.36,  hasQol:true  },
+  "Indore":        { essentials:37800,  rent:5600,  food:12800, util:4800, transport:8000, hh:6600,  savings:0.22, qol:null, safety:null,  healthcare:null,  pollution:null,  climate:null,  traffic:null,  emi50L:26900, propPrice:2700000, affordPressure:null,   hasQol:false },
+  "Jaipur":        { essentials:35800,  rent:5200,  food:12200, util:4600, transport:7800, hh:6000,  savings:0.25, qol:68.6, safety:55.6,  healthcare:58.6,  pollution:63.2,  climate:44.8,  traffic:52.4,  emi50L:27200, propPrice:2900000, affordPressure:35.52,  hasQol:true  },
+  "Kanpur":        { essentials:30400,  rent:4000,  food:11200, util:4200, transport:6600, hh:4400,  savings:0.30, qol:null, safety:null,  healthcare:null,  pollution:null,  climate:null,  traffic:null,  emi50L:26700, propPrice:2100000, affordPressure:null,   hasQol:false },
+  "Kolkata":       { essentials:41200,  rent:6000,  food:13400, util:5000, transport:9200, hh:7600,  savings:0.21, qol:65.4, safety:58.2,  healthcare:62.4,  pollution:74.6,  climate:52.8,  traffic:56.8,  emi50L:27600, propPrice:3100000, affordPressure:41.04,  hasQol:true  },
+  "Lucknow":       { essentials:31800,  rent:4200,  food:11400, util:4200, transport:6800, hh:5200,  savings:0.28, qol:null, safety:null,  healthcare:null,  pollution:null,  climate:null,  traffic:null,  emi50L:26800, propPrice:2200000, affordPressure:null,   hasQol:false },
+  "Ludhiana":      { essentials:36400,  rent:5400,  food:12400, util:4700, transport:7900, hh:6000,  savings:0.24, qol:null, safety:null,  healthcare:null,  pollution:null,  climate:null,  traffic:null,  emi50L:26900, propPrice:2600000, affordPressure:null,   hasQol:false },
+  "Mumbai":        { essentials:82400,  rent:22000, food:21200, util:8400, transport:14800,hh:16000, savings:0.07, qol:73.1, safety:66.8,  healthcare:72.8,  pollution:74.6,  climate:82.4,  traffic:58.4,  emi50L:38200, propPrice:14625000,affordPressure:43.94,  hasQol:true  },
+  "Nagpur":        { essentials:37600,  rent:5600,  food:12600, util:4800, transport:8000, hh:6600,  savings:0.22, qol:null, safety:null,  healthcare:null,  pollution:null,  climate:null,  traffic:null,  emi50L:26900, propPrice:2700000, affordPressure:null,   hasQol:false },
+  "Patna":         { essentials:32400,  rent:4200,  food:11400, util:4200, transport:6800, hh:5800,  savings:0.28, qol:null, safety:null,  healthcare:null,  pollution:null,  climate:null,  traffic:null,  emi50L:26700, propPrice:2100000, affordPressure:null,   hasQol:false },
+  "Pune":          { essentials:51200,  rent:9000,  food:15400, util:6200, transport:10800,hh:9800,  savings:0.15, qol:78.4, safety:62.4,  healthcare:68.2,  pollution:52.4,  climate:82.4,  traffic:58.4,  emi50L:30800, propPrice:5400000, affordPressure:44.22,  hasQol:true  },
+  "Surat":         { essentials:38800,  rent:5800,  food:13000, util:5000, transport:8200, hh:6800,  savings:0.20, qol:null, safety:null,  healthcare:null,  pollution:null,  climate:null,  traffic:null,  emi50L:27000, propPrice:2900000, affordPressure:null,   hasQol:false },
+  "Vadodara":      { essentials:36800,  rent:5400,  food:12600, util:4700, transport:7900, hh:6200,  savings:0.24, qol:null, safety:null,  healthcare:null,  pollution:null,  climate:null,  traffic:null,  emi50L:26900, propPrice:2500000, affordPressure:null,   hasQol:false },
+  "Visakhapatnam": { essentials:38200,  rent:5600,  food:12800, util:4800, transport:8200, hh:6800,  savings:0.22, qol:null, safety:null,  healthcare:null,  pollution:null,  climate:null,  traffic:null,  emi50L:27100, propPrice:2800000, affordPressure:null,   hasQol:false }
+};
+
+const TOP_BANKS = [
+  { name:"Central Bank of India", rate:"7.10%" },
+  { name:"Bank of India",         rate:"7.10%" },
+  { name:"Punjab & Sind Bank",    rate:"7.10%" },
+  { name:"LIC Housing Finance",   rate:"7.15%" },
+  { name:"Canara Bank",           rate:"7.15%" },
+];
+
+const fmt = (n) => '₹' + Math.round(n).toLocaleString('en-IN');
+const pct = (n) => Math.round(n) + '%';
+
+let allocationChartInst = null;
+let qolChartInst = null;
+
+/* ── Populate dropdown ── */
+window.onload = () => {
+  const sel = document.getElementById('citySelect');
+  Object.keys(CITIES).sort().forEach(c => {
+    const o = document.createElement('option');
+    o.value = o.textContent = c;
+    sel.appendChild(o);
+  });
+  sel.value = 'Hyderabad';
+};
+
+/* ── Main analysis ── */
+function analyseRelocation(btn) {
+  const city   = document.getElementById('citySelect').value;
+  const salary = parseFloat(document.getElementById('salaryInput').value) || 50000;
+  const d      = CITIES[city];
+
+  /* verdicts */
+  const ratio       = salary / d.essentials;
+  const savingsPct  = Math.max(0, (salary - d.essentials) / salary * 100);
+  const canLoan     = salary >= 40000;
+  const maxLoan     = Math.round(salary * 0.40 / (8.82/100/12) * (1 - Math.pow(1+8.82/100/12,-240)));
+  const comfEMI     = Math.round(salary * 0.40);
+  const stdEMI      = d.emi50L;
+  const disposable  = salary - d.essentials;
+  const savings     = Math.max(0, disposable * 0.5);
+
+  let verdict, vClass;
+  if      (ratio >= 1.4)  { verdict = 'Highly Recommended';  vClass = 'go'; }
+  else if (ratio >= 1.0)  { verdict = 'Consider with Care';  vClass = 'caution'; }
+  else                    { verdict = 'Not Recommended';     vClass = 'stop'; }
+
+  const verdictIcons = { go:'◉', caution:'◎', stop:'◌' };
+
+  /* ── VERDICT BANNER ── */
+  const banner = document.getElementById('verdictBanner');
+  banner.className = `verdict-banner ${vClass}`;
+  document.getElementById('verdictIcon').textContent = verdictIcons[vClass];
+  document.getElementById('verdictCity').innerHTML =
+    city + `<span>at ${fmt(salary)}/month salary</span>`;
+  document.getElementById('verdictSub').textContent =
+    `Salary covers ${pct(ratio * 100)} of monthly essentials (${pct(100)} = breakeven)`;
+  const pill = document.getElementById('verdictPill');
+  pill.className = `verdict-pill ${vClass}`;
+  pill.textContent = verdict;
+
+  /* ── METRIC CARDS ── */
+  const essM = document.getElementById('mEssentials');
+  essM.textContent = fmt(d.essentials);
+  essM.className   = 'metric-value ' + (ratio >= 1 ? 'green' : 'red');
+  document.getElementById('mEssentialsPct').textContent = pct(d.essentials/salary*100) + ' of salary';
+
+  const dispM = document.getElementById('mDisposable');
+  dispM.textContent = disposable >= 0 ? fmt(disposable) : '-' + fmt(Math.abs(disposable));
+  dispM.className   = 'metric-value ' + (disposable >= 0 ? 'green' : 'red');
+  document.getElementById('mDisposableSub').textContent = disposable >= 0 ? 'after essentials' : 'shortfall';
+
+  const savM = document.getElementById('mSavings');
+  savM.textContent = fmt(savings);
+  savM.className   = 'metric-value ' + (savings > 10000 ? 'green' : savings > 0 ? 'amber' : 'red');
+  document.getElementById('mSavingsSub').textContent = pct(savingsPct) + ' savings potential';
+
+  const qolM = document.getElementById('mQol');
+  qolM.textContent = d.qol !== null ? d.qol.toFixed(1) : 'N/A';
+  document.getElementById('mQolSub').textContent = d.hasQol ? 'Numbeo index · 2026' : 'No QoL data';
+
+  /* ── BUDGET BARS ── */
+  const categories = [
+    { label:'Rent / PG',    val: d.rent,      color:'#5b9cf6' },
+    { label:'Food & Dining',val: d.food,      color:'#e8b84b' },
+    { label:'Utilities',    val: d.util,      color:'#3fb57a' },
+    { label:'Transport',    val: d.transport, color:'#f0a35c' },
+    { label:'Household',    val: d.hh,        color:'#a78bfa' },
+  ];
+  const maxCat = Math.max(...categories.map(c => c.val));
+  const barsEl = document.getElementById('budgetBars');
+  barsEl.innerHTML = '';
+  categories.forEach(cat => {
+    const barW = Math.round(cat.val / maxCat * 100);
+    barsEl.innerHTML += `
+      <div class="budget-row">
+        <span class="budget-label">${cat.label}</span>
+        <div class="budget-bar-wrap">
+          <div class="budget-bar" style="background:${cat.color};" data-w="${barW}"></div>
+        </div>
+        <span class="budget-amount">${fmt(cat.val)}</span>
+      </div>`;
+  });
+  document.getElementById('budgetTotal').textContent = fmt(d.essentials);
+  setTimeout(() => {
+    document.querySelectorAll('.budget-bar').forEach(b => b.style.width = b.dataset.w + '%');
+  }, 60);
+
+  /* ── ALLOCATION DONUT ── */
+  const essentialsPct = Math.min(100, Math.round(d.essentials / salary * 100));
+  const surplusPct    = Math.max(0, 100 - essentialsPct);
+  const savPct2       = Math.round(surplusPct * 0.5);
+  const discPct       = surplusPct - savPct2;
+
+  if (allocationChartInst) allocationChartInst.destroy();
+  allocationChartInst = new Chart(document.getElementById('allocationChart'), {
+    type: 'doughnut',
+    data: {
+      labels: ['Essentials', 'Savings', 'Discretionary'],
+      datasets: [{
+        data: [essentialsPct, savPct2, discPct],
+        backgroundColor: ['#e05c5c','#3fb57a','#e8b84b'],
+        borderColor: '#161b22',
+        borderWidth: 3,
+        hoverOffset: 6
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false, cutout: '68%',
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: ctx => ` ${ctx.label}: ${ctx.parsed}%  (${fmt(salary * ctx.parsed / 100)})`
+          }
+        }
+      }
+    }
+  });
+
+  const legendEl = document.getElementById('allocationLegend');
+  const lColors  = ['#e05c5c','#3fb57a','#e8b84b'];
+  const lLabels  = ['Essentials','Savings','Discretionary'];
+  const lVals    = [essentialsPct, savPct2, discPct];
+  legendEl.innerHTML = lLabels.map((l,i) =>
+    `<span style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted);">
+       <span style="width:10px;height:10px;border-radius:2px;background:${lColors[i]};flex-shrink:0;"></span>
+       ${l} · ${lVals[i]}%
+     </span>`
+  ).join('');
+
+  /* ── QOL RADAR ── */
+  const qolDims = d.hasQol
+    ? [d.safety, d.healthcare, 100 - d.pollution, d.climate, 100 - d.traffic, d.qol]
+    : [55, 58, 45, 55, 50, 60];  // estimated fallback
+  document.getElementById('noQolNote').style.display = d.hasQol ? 'none' : 'block';
+
+  if (qolChartInst) qolChartInst.destroy();
+  qolChartInst = new Chart(document.getElementById('qolChart'), {
+    type: 'radar',
+    data: {
+      labels: ['Safety', 'Healthcare', 'Clean Air', 'Climate', 'Traffic', 'Overall QoL'],
+      datasets: [{
+        label: city,
+        data: qolDims,
+        backgroundColor: 'rgba(232,184,75,0.12)',
+        borderColor: '#e8b84b',
+        borderWidth: 1.5,
+        pointBackgroundColor: '#e8b84b',
+        pointRadius: 3
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      scales: {
+        r: {
+          min: 0, max: 100,
+          ticks: { display: false },
+          grid:  { color: 'rgba(255,255,255,0.07)' },
+          pointLabels: { color: '#7d8590', font: { size: 10, family: 'DM Mono' } },
+          angleLines: { color: 'rgba(255,255,255,0.06)' }
+        }
+      },
+      plugins: { legend: { display: false } }
+    }
+  });
+
+  /* ── LOAN PANEL ── */
+  const loanBadge = document.getElementById('loanEligBadge');
+  if (salary >= 60000) {
+    loanBadge.textContent = 'Eligible';
+    loanBadge.className   = 'loan-eligibility loan-eligible';
+  } else if (salary >= 35000) {
+    loanBadge.textContent = 'Marginal';
+    loanBadge.className   = 'loan-eligibility loan-caution';
+  } else {
+    loanBadge.textContent = 'Not eligible';
+    loanBadge.className   = 'loan-eligibility loan-ineligible';
+  }
+  document.getElementById('lsMaxLoan').textContent   = fmt(maxLoan);
+  document.getElementById('lsComfEMI').textContent   = fmt(comfEMI) + '/mo';
+  document.getElementById('lsStdEMI').textContent    = fmt(stdEMI) + '/mo';
+  document.getElementById('lsPropPrice').textContent = fmt(d.propPrice);
+
+  const bankListEl = document.getElementById('bankList');
+  bankListEl.innerHTML = TOP_BANKS.map(b => `
+    <div class="bank-row">
+      <span class="bank-name">${b.name}</span>
+      <span class="bank-rate">${b.rate} p.a.</span>
+    </div>`).join('');
+
+  /* ── COMPARISON TABLE ── */
+  const ranked = Object.entries(CITIES)
+    .map(([c, v]) => ({ city: c, ...v, ratio: salary / v.essentials }))
+    .sort((a, b) => b.ratio - a.ratio);
+
+  const tbody = document.getElementById('compBody');
+  tbody.innerHTML = '';
+  ranked.forEach(r => {
+    const isCurrent = r.city === city;
+    const v2   = r.ratio >= 1.4 ? 'go' : r.ratio >= 1.0 ? 'caution' : 'stop';
+    const vTxt = r.ratio >= 1.4 ? 'Recommended' : r.ratio >= 1.0 ? 'Consider' : 'Not Advised';
+    tbody.innerHTML += `
+      <tr class="${isCurrent ? 'current-city' : ''}">
+        <td class="city-name">${isCurrent ? '▶ ' : ''}${r.city}</td>
+        <td class="mono">${fmt(r.essentials)}</td>
+        <td class="mono">${r.ratio.toFixed(2)}×</td>
+        <td class="mono">${r.qol !== null ? r.qol : '—'}</td>
+        <td class="mono">${r.affordPressure !== null ? r.affordPressure.toFixed(1) : '—'}</td>
+        <td><span class="pill-sm pill-${v2}">${vTxt}</span></td>
+      </tr>`;
+  });
+
+  /* ── ADVICE CARD ── */
+  const card = document.getElementById('adviceCard');
+  card.className = `advice-card ${vClass}`;
+  document.getElementById('adviceTitle').textContent =
+    vClass === 'go'      ? `${city} is a strong fit for your profile.` :
+    vClass === 'caution' ? `${city} is viable but requires careful planning.` :
+                           `${city} is financially strained at your salary.`;
+
+  const affordableAlts = ranked.filter(r => r.ratio >= 1.4 && r.city !== city).slice(0, 3).map(r => r.city);
+
+  let bodyHTML = '';
+  if (vClass === 'go') {
+    bodyHTML = `With a <strong>${fmt(salary)}</strong> salary, your income exceeds essentials by <strong>${fmt(disposable)}</strong>/month in ${city}. 
+    You can comfortably save <strong>${fmt(savings)}</strong>/month (${pct(savingsPct)} of salary) while maintaining your standard of living.`;
+  } else if (vClass === 'caution') {
+    bodyHTML = `Your salary of <strong>${fmt(salary)}</strong> barely covers essentials of <strong>${fmt(d.essentials)}</strong> in ${city}. 
+    You would have limited room for savings or emergencies. Consider a higher salary offer before committing.`;
+  } else {
+    bodyHTML = `At <strong>${fmt(salary)}</strong>/month, your salary falls <strong>${fmt(Math.abs(disposable))}</strong> short of ${city}'s monthly essentials of <strong>${fmt(d.essentials)}</strong>. 
+    This city is not financially viable at this income level.`;
+  }
+  document.getElementById('adviceBody').innerHTML = bodyHTML;
+
+  const insights = [];
+
+  if (stdEMI > comfEMI) {
+    insights.push(`<strong>Home loan caution:</strong> A 50L loan EMI (${fmt(stdEMI)}/mo) exceeds your comfortable EMI threshold of ${fmt(comfEMI)}/mo. Consider a smaller loan or longer tenure.`);
+  } else {
+    insights.push(`<strong>Home loan feasible:</strong> A 50L / 20yr EMI (${fmt(stdEMI)}/mo) fits within your 40% EMI budget of ${fmt(comfEMI)}/mo.`);
+  }
+
+  if (affordableAlts.length > 0 && vClass !== 'go') {
+    insights.push(`<strong>Better alternatives:</strong> ${affordableAlts.join(', ')} offer a more comfortable salary-to-cost ratio at your income level.`);
+  }
+
+  if (d.hasQol) {
+    if (d.qol >= 74) insights.push(`<strong>High QoL city:</strong> ${city} scores ${d.qol} on quality of life — among the top tier for livability in India.`);
+    if (d.pollution > 70) insights.push(`<strong>Air quality alert:</strong> Pollution index is ${d.pollution} — consider air purifier costs and health implications.`);
+    if (d.safety < 55) insights.push(`<strong>Safety note:</strong> Safety index is ${d.safety} — below average for Indian cities. Factor this into your decision.`);
+  } else {
+    insights.push(`<strong>Data gap:</strong> QoL, safety, healthcare, and pollution indices are not available for ${city} in the 2026 dataset. Verify independently before relocating.`);
+  }
+
+  if (savings >= 15000) {
+    insights.push(`<strong>Savings plan:</strong> With ${fmt(savings)}/mo available, you could build a ₹1.8L emergency fund in 12 months and start a SIP in 6 months.`);
+  }
+
+  document.getElementById('adviceInsights').innerHTML =
+    insights.map(i => `<li>${i}</li>`).join('');
+
+  /* ── show results ── */
+  const resultsEl = document.getElementById('results');
+  resultsEl.style.display = 'block';
+  resultsEl.classList.remove('visible');
+  void resultsEl.offsetWidth;
+  resultsEl.classList.add('visible');
+  setTimeout(() => resultsEl.scrollIntoView({ behavior:'smooth', block:'start' }), 80);
+}
+</script>
+</body>
+</html>

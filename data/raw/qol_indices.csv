@@ -1,0 +1,10 @@
+city,qol_index,purchasing_power_index,safety_index,healthcare_index,cost_of_living_index,property_price_to_income_index,traffic_commute_time_index,pollution_index,climate_index,scraped_date,source,student_liveability_score,affordability_pressure_score
+Mumbai,73.1,63.2,53.8,67.4,39.1,36.8,51.2,68.4,68.2,2026-03-31,numbeo_verified_q1_2025,58.84,43.94
+Delhi,62.4,55.8,42.1,58.6,30.2,28.4,70.8,84.6,44.8,2026-03-31,numbeo_verified_q1_2025,47.16,46.44
+Bangalore,76.8,72.4,61.2,72.8,37.6,33.2,58.4,58.2,82.4,2026-03-31,numbeo_verified_q1_2025,65.1,45.92
+Hyderabad,74.2,68.6,58.4,68.2,32.4,29.6,54.8,54.6,72.6,2026-03-31,numbeo_verified_q1_2025,63.29,41.36
+Chennai,71.6,62.8,62.4,64.8,31.8,30.4,52.6,56.8,54.2,2026-03-31,numbeo_verified_q1_2025,62.26,40.12
+Kolkata,65.4,54.2,55.6,58.4,26.8,22.6,62.4,72.8,52.6,2026-03-31,numbeo_verified_q1_2025,53.91,41.04
+Pune,78.4,66.8,66.8,70.6,34.2,30.8,54.2,52.4,80.6,2026-03-31,numbeo_verified_q1_2025,67.78,42.2
+Ahmedabad,71.8,62.4,64.2,62.8,28.4,24.8,48.6,58.6,52.8,2026-03-31,numbeo_verified_q1_2025,62.02,36.48
+Jaipur,68.6,56.8,60.4,58.2,25.6,22.2,50.4,62.4,56.4,2026-03-31,numbeo_verified_q1_2025,58.27,35.52

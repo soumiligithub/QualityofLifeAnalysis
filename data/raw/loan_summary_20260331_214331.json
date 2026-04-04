@@ -1,0 +1,35 @@
+{
+  "extraction_date": "2026-03-31T21:43:31.641069",
+  "total_records": 5040,
+  "unique_banks": 21,
+  "unique_cities": 24,
+  "unique_audience_types": 10,
+  "avg_interest_rate": 8.843551587301587,
+  "avg_processing_fee": 0.5021964285714285,
+  "interest_rate_by_bank_type": {
+    "Housing Finance": 8.985555555555557,
+    "Private Sector": 8.731309523809523,
+    "Public Sector": 8.835260416666667
+  },
+  "cheapest_cities": {
+    "Ahmedabad": 8.68404761904762,
+    "Kolkata": 8.731190476190475,
+    "Bhopal": 8.751666666666667,
+    "Kochi": 8.779761904761905,
+    "Agra": 8.783095238095239
+  },
+  "costliest_cities": {
+    "Mumbai": 9.041666666666666,
+    "Hyderabad": 8.986428571428572,
+    "Patna": 8.919285714285714,
+    "Vadodara": 8.909761904761904,
+    "Thane": 8.906904761904762
+  },
+  "audience_best_rates": {
+    "Salaried - Government/PSU": 8.718551587301587,
+    "Salaried - IT/Corporate": 8.768551587301587,
+    "Women Applicants": 8.768551587301587,
+    "First Time Home Buyers": 8.818551587301588,
+    "Self-Employed - Business": 8.818551587301588
+  }
+}

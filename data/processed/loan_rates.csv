@@ -1,0 +1,39 @@
+bank,min_rate,max_rate,processing_fee_pct,max_tenure_yrs,extracted_at,source
+Kotak Mahindra Bank,7.7,12.0,,30,2026-03-22,bankbazaar
+Union Bank of India,7.15,0.5,,30,2026-03-22,bankbazaar
+Bank of Baroda,7.2,8.9,,30,2026-03-22,bankbazaar
+Central Bank of India,7.1,0.5,,30,2026-03-22,bankbazaar
+Bank of India,7.1,0.25,,30,2026-03-22,bankbazaar
+State Bank of India,7.25,0.35,,30,2026-03-22,bankbazaar
+HDFC Home Loans,7.75,0.5,,30,2026-03-22,bankbazaar
+LIC Housing Finance,7.15,0.25,,30,2026-03-22,bankbazaar
+Axis Bank,8.0,14.0,,30,2026-03-22,bankbazaar
+Canara Bank,7.15,7.15,,30,2026-03-22,bankbazaar
+Punjab and Sind Bank,7.1,0.25,,30,2026-03-22,bankbazaar
+IDFC First Bank,8.85,8.85,,30,2026-03-22,bankbazaar
+Bank of Maharashtra,7.15,0.25,,30,2026-03-22,bankbazaar
+Punjab National Bank (PNB),7.75,0.35,,30,2026-03-22,bankbazaar
+IDBI Bank,7.35,0.5,,30,2026-03-22,bankbazaar
+HSBC Bank,7.45,12.75,,30,2026-03-22,bankbazaar
+Karur Vysya Bank,8.5,8.5,,30,2026-03-22,bankbazaar
+Saraswat Bank Home Loan,7.35,7.35,,30,2026-03-22,bankbazaar
+Jammu and Kashmir Bank,7.25,0.25,,30,2026-03-22,bankbazaar
+South Indian Bank,7.2,0.5,,30,2026-03-22,bankbazaar
+Federal Bank,7.3,0.5,,30,2026-03-22,bankbazaar
+Standard Chartered Bank,7.99,7.99,,30,2026-03-22,bankbazaar
+Karnataka Bank,7.3,0.25,,30,2026-03-22,bankbazaar
+Dhanlaxmi Bank,7.65,1.0,,30,2026-03-22,bankbazaar
+Tata Capital,7.5,7.5,,30,2026-03-22,bankbazaar
+Tamilnad Mercantile Bank,8.8,0.5,,30,2026-03-22,bankbazaar
+Bandhan Bank,8.41,8.41,,30,2026-03-22,bankbazaar
+Yes Bank,9.0,1.5,,30,2026-03-22,bankbazaar
+Hudco Home Loan,9.2,9.7,,30,2026-03-22,bankbazaar
+GIC Housing Finance,8.8,8.8,,30,2026-03-22,bankbazaar
+Truhome Finance,8.5,8.5,,30,2026-03-22,bankbazaar
+SBI,8.5,9.85,0.35,30,2026-03-22,rbi_fallback
+HDFC Bank,8.75,9.65,0.5,30,2026-03-22,rbi_fallback
+ICICI Bank,8.75,9.8,0.5,30,2026-03-22,rbi_fallback
+Kotak Mahindra,8.75,9.6,0.5,20,2026-03-22,rbi_fallback
+PNB,8.5,10.25,0.35,30,2026-03-22,rbi_fallback
+LIC Housing,8.5,10.75,0.25,30,2026-03-22,rbi_fallback
+Bajaj Housing,8.5,15.0,0.5,32,2026-03-22,rbi_fallback

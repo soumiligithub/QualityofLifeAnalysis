@@ -1,0 +1,16 @@
+city,petrol,diesel,cng,extracted_at,source
+Kolkata,106.03,92.76,67.2,2026-03-22 21:05,fallback
+Mumbai,106.31,94.27,74.5,2026-03-22 21:05,fallback
+Bangalore,102.86,88.94,67.8,2026-03-22 21:05,fallback
+Delhi,95.72,88.62,74.09,2026-03-22 21:05,fallback
+Hyderabad,109.66,97.82,70.0,2026-03-22 21:05,fallback
+Chennai,102.63,94.24,68.0,2026-03-22 21:05,fallback
+Pune,105.87,92.1,72.0,2026-03-22 21:05,fallback
+Ahmedabad,96.63,92.38,63.0,2026-03-22 21:05,fallback
+Jaipur,108.48,93.72,73.0,2026-03-22 21:05,fallback
+Indore,107.94,96.84,72.0,2026-03-22 21:06,fallback
+Lucknow,96.57,89.76,76.0,2026-03-22 21:06,fallback
+Surat,96.59,92.35,64.0,2026-03-22 21:06,fallback
+Nagpur,104.78,91.97,69.0,2026-03-22 21:06,fallback
+Bhopal,108.65,93.9,71.0,2026-03-22 21:06,fallback
+Coimbatore,103.0,89.0,,2026-03-22 21:06,fallback

@@ -1,0 +1,121 @@
+city,rent_price_raw,locality,bhk,area_sqft_raw,extracted_at,source
+Kolkata,9000,Area 1,1 BHK,450,2026-03-21 21:59,fallback
+Kolkata,9750,Area 2,1 BHK,480,2026-03-21 21:59,fallback
+Kolkata,15000,Area 3,2 BHK,750,2026-03-21 21:59,fallback
+Kolkata,13500,Area 4,2 BHK,720,2026-03-21 21:59,fallback
+Kolkata,16500,Area 5,2 BHK,800,2026-03-21 21:59,fallback
+Kolkata,22500,Area 6,3 BHK,1100,2026-03-21 21:59,fallback
+Kolkata,21000,Area 7,3 BHK,1050,2026-03-21 21:59,fallback
+Kolkata,6750,Area 8,Studio,350,2026-03-21 21:59,fallback
+Mumbai,27000,Area 1,1 BHK,450,2026-03-21 22:00,fallback
+Mumbai,29250,Area 2,1 BHK,480,2026-03-21 22:00,fallback
+Mumbai,45000,Area 3,2 BHK,750,2026-03-21 22:00,fallback
+Mumbai,40500,Area 4,2 BHK,720,2026-03-21 22:00,fallback
+Mumbai,49500,Area 5,2 BHK,800,2026-03-21 22:00,fallback
+Mumbai,67500,Area 6,3 BHK,1100,2026-03-21 22:00,fallback
+Mumbai,62999,Area 7,3 BHK,1050,2026-03-21 22:00,fallback
+Mumbai,20250,Area 8,Studio,350,2026-03-21 22:00,fallback
+Bangalore,16800,Area 1,1 BHK,450,2026-03-21 22:00,fallback
+Bangalore,18200,Area 2,1 BHK,480,2026-03-21 22:00,fallback
+Bangalore,28000,Area 3,2 BHK,750,2026-03-21 22:00,fallback
+Bangalore,25200,Area 4,2 BHK,720,2026-03-21 22:00,fallback
+Bangalore,30800,Area 5,2 BHK,800,2026-03-21 22:00,fallback
+Bangalore,42000,Area 6,3 BHK,1100,2026-03-21 22:00,fallback
+Bangalore,39200,Area 7,3 BHK,1050,2026-03-21 22:00,fallback
+Bangalore,12600,Area 8,Studio,350,2026-03-21 22:00,fallback
+Delhi,18000,Area 1,1 BHK,450,2026-03-21 22:00,fallback
+Delhi,19500,Area 2,1 BHK,480,2026-03-21 22:00,fallback
+Delhi,30000,Area 3,2 BHK,750,2026-03-21 22:00,fallback
+Delhi,27000,Area 4,2 BHK,720,2026-03-21 22:00,fallback
+Delhi,33000,Area 5,2 BHK,800,2026-03-21 22:00,fallback
+Delhi,45000,Area 6,3 BHK,1100,2026-03-21 22:00,fallback
+Delhi,42000,Area 7,3 BHK,1050,2026-03-21 22:00,fallback
+Delhi,13500,Area 8,Studio,350,2026-03-21 22:00,fallback
+Hyderabad,13200,Area 1,1 BHK,450,2026-03-21 22:00,fallback
+Hyderabad,14300,Area 2,1 BHK,480,2026-03-21 22:00,fallback
+Hyderabad,22000,Area 3,2 BHK,750,2026-03-21 22:00,fallback
+Hyderabad,19800,Area 4,2 BHK,720,2026-03-21 22:00,fallback
+Hyderabad,24200,Area 5,2 BHK,800,2026-03-21 22:00,fallback
+Hyderabad,33000,Area 6,3 BHK,1100,2026-03-21 22:00,fallback
+Hyderabad,30799,Area 7,3 BHK,1050,2026-03-21 22:00,fallback
+Hyderabad,9900,Area 8,Studio,350,2026-03-21 22:00,fallback
+Chennai,12000,Area 1,1 BHK,450,2026-03-21 22:00,fallback
+Chennai,13000,Area 2,1 BHK,480,2026-03-21 22:00,fallback
+Chennai,20000,Area 3,2 BHK,750,2026-03-21 22:00,fallback
+Chennai,18000,Area 4,2 BHK,720,2026-03-21 22:00,fallback
+Chennai,22000,Area 5,2 BHK,800,2026-03-21 22:00,fallback
+Chennai,30000,Area 6,3 BHK,1100,2026-03-21 22:00,fallback
+Chennai,28000,Area 7,3 BHK,1050,2026-03-21 22:00,fallback
+Chennai,9000,Area 8,Studio,350,2026-03-21 22:00,fallback
+Pune,13200,Area 1,1 BHK,450,2026-03-21 22:00,fallback
+Pune,14300,Area 2,1 BHK,480,2026-03-21 22:00,fallback
+Pune,22000,Area 3,2 BHK,750,2026-03-21 22:00,fallback
+Pune,19800,Area 4,2 BHK,720,2026-03-21 22:00,fallback
+Pune,24200,Area 5,2 BHK,800,2026-03-21 22:00,fallback
+Pune,33000,Area 6,3 BHK,1100,2026-03-21 22:00,fallback
+Pune,30799,Area 7,3 BHK,1050,2026-03-21 22:00,fallback
+Pune,9900,Area 8,Studio,350,2026-03-21 22:00,fallback
+Ahmedabad,8400,Area 1,1 BHK,450,2026-03-21 22:00,fallback
+Ahmedabad,9100,Area 2,1 BHK,480,2026-03-21 22:00,fallback
+Ahmedabad,14000,Area 3,2 BHK,750,2026-03-21 22:00,fallback
+Ahmedabad,12600,Area 4,2 BHK,720,2026-03-21 22:00,fallback
+Ahmedabad,15400,Area 5,2 BHK,800,2026-03-21 22:00,fallback
+Ahmedabad,21000,Area 6,3 BHK,1100,2026-03-21 22:00,fallback
+Ahmedabad,19600,Area 7,3 BHK,1050,2026-03-21 22:00,fallback
+Ahmedabad,6300,Area 8,Studio,350,2026-03-21 22:00,fallback
+Jaipur,7200,Area 1,1 BHK,450,2026-03-21 22:01,fallback
+Jaipur,7800,Area 2,1 BHK,480,2026-03-21 22:01,fallback
+Jaipur,12000,Area 3,2 BHK,750,2026-03-21 22:01,fallback
+Jaipur,10800,Area 4,2 BHK,720,2026-03-21 22:01,fallback
+Jaipur,13200,Area 5,2 BHK,800,2026-03-21 22:01,fallback
+Jaipur,18000,Area 6,3 BHK,1100,2026-03-21 22:01,fallback
+Jaipur,16800,Area 7,3 BHK,1050,2026-03-21 22:01,fallback
+Jaipur,5400,Area 8,Studio,350,2026-03-21 22:01,fallback
+Indore,6000,Area 1,1 BHK,450,2026-03-21 22:01,fallback
+Indore,6500,Area 2,1 BHK,480,2026-03-21 22:01,fallback
+Indore,10000,Area 3,2 BHK,750,2026-03-21 22:01,fallback
+Indore,9000,Area 4,2 BHK,720,2026-03-21 22:01,fallback
+Indore,11000,Area 5,2 BHK,800,2026-03-21 22:01,fallback
+Indore,15000,Area 6,3 BHK,1100,2026-03-21 22:01,fallback
+Indore,14000,Area 7,3 BHK,1050,2026-03-21 22:01,fallback
+Indore,4500,Area 8,Studio,350,2026-03-21 22:01,fallback
+Lucknow,6000,Area 1,1 BHK,450,2026-03-21 22:01,fallback
+Lucknow,6500,Area 2,1 BHK,480,2026-03-21 22:01,fallback
+Lucknow,10000,Area 3,2 BHK,750,2026-03-21 22:01,fallback
+Lucknow,9000,Area 4,2 BHK,720,2026-03-21 22:01,fallback
+Lucknow,11000,Area 5,2 BHK,800,2026-03-21 22:01,fallback
+Lucknow,15000,Area 6,3 BHK,1100,2026-03-21 22:01,fallback
+Lucknow,14000,Area 7,3 BHK,1050,2026-03-21 22:01,fallback
+Lucknow,4500,Area 8,Studio,350,2026-03-21 22:01,fallback
+Surat,6600,Area 1,1 BHK,450,2026-03-21 22:01,fallback
+Surat,7150,Area 2,1 BHK,480,2026-03-21 22:01,fallback
+Surat,11000,Area 3,2 BHK,750,2026-03-21 22:01,fallback
+Surat,9900,Area 4,2 BHK,720,2026-03-21 22:01,fallback
+Surat,12100,Area 5,2 BHK,800,2026-03-21 22:01,fallback
+Surat,16500,Area 6,3 BHK,1100,2026-03-21 22:01,fallback
+Surat,15399,Area 7,3 BHK,1050,2026-03-21 22:01,fallback
+Surat,4950,Area 8,Studio,350,2026-03-21 22:01,fallback
+Nagpur,6000,Area 1,1 BHK,450,2026-03-21 22:01,fallback
+Nagpur,6500,Area 2,1 BHK,480,2026-03-21 22:01,fallback
+Nagpur,10000,Area 3,2 BHK,750,2026-03-21 22:01,fallback
+Nagpur,9000,Area 4,2 BHK,720,2026-03-21 22:01,fallback
+Nagpur,11000,Area 5,2 BHK,800,2026-03-21 22:01,fallback
+Nagpur,15000,Area 6,3 BHK,1100,2026-03-21 22:01,fallback
+Nagpur,14000,Area 7,3 BHK,1050,2026-03-21 22:01,fallback
+Nagpur,4500,Area 8,Studio,350,2026-03-21 22:01,fallback
+Bhopal,5400,Area 1,1 BHK,450,2026-03-21 22:01,fallback
+Bhopal,5850,Area 2,1 BHK,480,2026-03-21 22:01,fallback
+Bhopal,9000,Area 3,2 BHK,750,2026-03-21 22:01,fallback
+Bhopal,8100,Area 4,2 BHK,720,2026-03-21 22:01,fallback
+Bhopal,9900,Area 5,2 BHK,800,2026-03-21 22:01,fallback
+Bhopal,13500,Area 6,3 BHK,1100,2026-03-21 22:01,fallback
+Bhopal,12600,Area 7,3 BHK,1050,2026-03-21 22:01,fallback
+Bhopal,4050,Area 8,Studio,350,2026-03-21 22:01,fallback
+Coimbatore,7200,Area 1,1 BHK,450,2026-03-21 22:01,fallback
+Coimbatore,7800,Area 2,1 BHK,480,2026-03-21 22:01,fallback
+Coimbatore,12000,Area 3,2 BHK,750,2026-03-21 22:01,fallback
+Coimbatore,10800,Area 4,2 BHK,720,2026-03-21 22:01,fallback
+Coimbatore,13200,Area 5,2 BHK,800,2026-03-21 22:01,fallback
+Coimbatore,18000,Area 6,3 BHK,1100,2026-03-21 22:01,fallback
+Coimbatore,16800,Area 7,3 BHK,1050,2026-03-21 22:01,fallback
+Coimbatore,5400,Area 8,Studio,350,2026-03-21 22:01,fallback
