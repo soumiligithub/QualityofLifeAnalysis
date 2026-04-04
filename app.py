@@ -286,7 +286,8 @@ def health():
     all_ok = all(v > 0 for v in status.values())
     return jsonify({"ok": all_ok, "rows": status})
 
-
 if __name__ == "__main__":
+    import os
+    port = int(os.environ.get("PORT", 5000))
     print("\n🚀 QoL Analyser starting on http://localhost:5000\n")
-    app.run(debug=True, port=5000)
+    app.run(host="0.0.0.0", port=port, debug=False)
